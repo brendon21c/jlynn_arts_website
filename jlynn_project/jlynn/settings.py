@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'jlynn.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'jlynn',
         'USER': 'Brendon',
         'PASSWORD': os.environ['POSTGRES_JLYNN_USER_PASSWORD'],
