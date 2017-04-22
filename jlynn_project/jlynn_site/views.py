@@ -6,5 +6,6 @@ from .models import Art
 
 def homepage(request):
 
+    collection = Art.objects.all()
 
-    return render(request, 'home_page.html')
+    return render(request, 'home_page.html', {'collection' : collection })

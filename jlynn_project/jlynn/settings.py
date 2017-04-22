@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'jlynn_site'
+    'jlynn_project.jlynn_site',
 ]
 
 MIDDLEWARE = [

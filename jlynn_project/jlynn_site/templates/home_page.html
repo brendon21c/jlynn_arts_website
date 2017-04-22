@@ -1,3 +1,6 @@
+<!-- I don't pretend to be a web designer so I have used this free template as
+a way to make the site look nicer. -->
+
 <!DOCTYPE html>
 <html>
 <title>W3.CSS Template</title>
@@ -21,17 +24,23 @@ body {font-family: "Raleway", Arial, sans-serif}
   </header>
 
   <!-- Photo Grid -->
+
   <div class="w3-row">
     <div class="w3-half">
-      <img src="/w3images/streetart.jpg" style="width:100%">
-      <img src="/w3images/streetart2.jpg" style="width:100%">
-      <img src="/w3images/streetart5.jpg" style="width:100%">
+
+      {% for art in collection %}
+      <img src="{{ art.photo_large.url }}" style="width:100%">
+      <img src="{{ art.photo_small.url }}" style="width:100%">
+
+
     </div>
 
     <div class="w3-half">
-      <img src="/w3images/streetart3.jpg" style="width:100%">
+      <img src="{{ art.photo_small.url }}" class="img-rounded" alt="" width="200" height="200">
       <img src="/w3images/streetart4.jpg" style="width:100%">
     </div>
+
+    {% endfor %}
   </div>
 
 <!-- End Page Content -->
