@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Jlynn Arts</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -13,20 +13,21 @@
   .carousel-inner > .item > img,
   .carousel-inner > .item > a > img {
 
-      width: 30%;
+      width: 50%;
       margin: auto;
   }
   body {font-family: "Raleway", Arial, sans-serif}
   .w3-row img {margin-bottom: -8px}
   </style>
 </head>
-<body>
+<body class="w3-black w3-content">
 
   <div class="w3-black w3-content" style="max-width:1500px">
 
       <!-- Header -->
     <header class="w3-black w3-container w3-xlarge w3-padding-24">
-      <a href="#" class="w3-text-white w3-left w3-button w3-black">MY ART</a>
+      <a href="{% url 'jlynn_site:homepage' %}" class="w3-text-white w3-left w3-button w3-black">MY ART</a>
+      <a href="{% url 'jlynn_site:art_store' %}" class="w3-text-white w3-left w3-button w3-black">SHOP</a>
       <a href="#about" class="w3-right w3-button w3-black">About</a>
     </header>
 
