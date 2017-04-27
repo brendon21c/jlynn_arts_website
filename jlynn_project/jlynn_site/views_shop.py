@@ -12,14 +12,3 @@ def art_store(request):
 
 
     return render(request, 'store_page.html', {'collection' : collection})
-
-def buy_painting(request, image_pk):
-
-
-    if request.method == 'POST':
-
-        print("got here, buy_painting")
-
-
-
-    return render(request, 'store_page.html')

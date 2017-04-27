@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Jlynn Arts</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+  type="text/css" media="screen">
+    form article label {
+      display: block;
+      margin: 5px;
+    }
+
+    form .submit {
+      margin: 15px 0;
+    }
+  body {font-family: "Raleway", Arial, sans-serif}
+  .w3-row img {margin-bottom: -8px}
+  </style>
+</head>
+<body class="w3-light-grey w3-content">
+
+  <div class="w3-light-grey w3-content" style="max-width:1500px">
+
+      <!-- Header -->
+    <header class="w3-black w3-container w3-xlarge w3-padding-24">
+      <a href="{% url 'jlynn_site:homepage' %}" class="w3-text-white w3-left w3-button w3-black">MY ART</a>
+      <a href="{% url 'jlynn_site:art_store' %}" class="w3-text-white w3-left w3-button w3-black">SHOP</a>
+      <a href="#about" class="w3-right w3-button w3-black">About</a>
+    </header>
+
+    <br></br>
+
+    <h3> Please enter your contact information </h3>
+
+    {% if image_pk %}
+
+    <div class="w3-light-grey w3-content">
+    <form action="{% url 'jlynn_site:buy_painting' image_pk=image_pk%}" method="post">
+
+      {% csrf_token %}
+      {{ form.as_p }}
+      
+      <article>
+            <label>
+              <span>Amount is ${{ price }}</span>
+            </label>
+          </article>
+
+          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                  data-key="{{ key }}"
+                  data-description="A Django Charge"
+                  data-amount="{{ price_stripe }}"
+                  data-locale="auto"></script>
+
+    </form>
+    </div>
+    {% endif %}
+
+  </div>
+</body>
+</html>
+
+
+<!-- <form action="{% url 'jlynn_site:buy_painting' image_pk=image_pk%}" method="post">
+
+  {% csrf_token %}
+  {{ form.as_p }}
+
+  <input class="w3-text-white w3-left w3-button w3-black" name='customer' type='submit' value='Enter'>
+
+</form> -->

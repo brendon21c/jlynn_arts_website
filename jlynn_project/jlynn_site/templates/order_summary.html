@@ -14,7 +14,6 @@
   .w3-row img {margin-bottom: -8px}
   </style>
 </head>
-
 <body class="w3-black w3-content">
 
   <div class="w3-black w3-content" style="max-width:1500px">
@@ -26,39 +25,18 @@
       <a href="#about" class="w3-right w3-button w3-black">About</a>
     </header>
 
-  <!-- Product grid -->
-  <h3>Some of my Work</h3><br>
+    <div class="w3-light-grey w3-content">
 
 
-  <div class="container-fluid bg-3 text-center">
-    <div class="row">
+      <p> Thank you, your order has been processed. We sincerly hope you enjoy your piece.</p>
 
-      {% for image in collection %}
-      <div class="col-sm-3">
-        <p>{{ image.title }}</p>
+      <h4> Order Summary</h4>
+      <br></br>
+      <p> {{ title }} </p>
+      <strong> ${{ price }} </strong>
 
-        <img src="{{MEDIA_URL}}{{image.photo_large.url}}" class="img-responsive" style="width:100%" alt="Image">
-
-        <p> {{ image.media }}<p>
-        <p> {{ image.length }} X {{ image.width }}<p>
-        <p> {{ image.price }}<p>
-        <div class="container-fluid bg-3 text-center">
-
-        <form action="{% url 'jlynn_site:buy_painting' image_pk=image.id %}">
-
-          {% csrf_token %}
-
-          <input class="w3-text-white w3-left w3-button w3-black" name='buy' type='submit' value='Buy'>
-
-        </form>
-      </div>
-
-      </div>
-      {% endfor %}
     </div>
-  </div>
 
   </div>
-
 </body>
 </html>
