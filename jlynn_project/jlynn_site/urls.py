@@ -9,5 +9,6 @@ urlpatterns = [
 
     url(r'^$', views.homepage, name='homepage'),
     url(r'^shop/$', views_shop.art_store, name='art_store'),
+    url(r'^shop/buy/(?P<image_pk>\d+)/$', views_shop.buy_painting, name='buy_painting')
 
     ]

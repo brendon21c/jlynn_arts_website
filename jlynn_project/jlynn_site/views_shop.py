@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404, render_to_response
 from .models import Art
 
 def art_store(request):
@@ -8,7 +8,18 @@ def art_store(request):
 
     if request.method == 'POST':
 
-        print("got here") # TODO need to figure out how to get what item was selected.
+        print("got here, art_store") # TODO need to figure out how to get what item was selected.
 
 
     return render(request, 'store_page.html', {'collection' : collection})
+
+def buy_painting(request, image_pk):
+
+
+    if request.method == 'POST':
+
+        print("got here, buy_painting")
+
+
+
+    return render(request, 'store_page.html')
