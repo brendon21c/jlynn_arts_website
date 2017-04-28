@@ -18,7 +18,8 @@ def buy_painting(request, image_pk):
     price = selection.price
     price_stripe = price * 100
     price_charge = int(price_stripe)
-    print(price_charge)
+
+    title = selection.title
 
     stripe.api_key = stripe_keys['secret_key']
 
@@ -28,11 +29,18 @@ def buy_painting(request, image_pk):
 
     if request.method == 'POST':
 
-        form_post = UserInfo(request.POST)
+        # form_post = UserInfo(request.POST)
+
+        name=request.POST['stripeShippingName'],
+        address=request.POST['stripeShippingAddressLine1'],
+        city=request.POST['stripeShippingAddressCity'],
+        zip_code=request.POST['stripeShippingAddressZip'],
+
+        print(address)
 
         customer = stripe.Customer.create(
-        email=form_post['email_address'],
-        source=request.POST['stripeToken']
+        email=request.POST['stripeEmail'],
+        source=request.POST['stripeToken'],
         )
 
 
@@ -40,10 +48,10 @@ def buy_painting(request, image_pk):
         customer=customer.id,
         amount=price_charge,
         currency='usd',
-        description='Your art purchase'
-    )
+        description='We thank you for your purchase. Please enjoy ' + title,
+        receipt_email=customer.email
 
-        #return render(request, 'customer_form.html', {'form' : form, 'image_pk' : image_pk, 'key' : key, 'price' : price, 'price_stripe' : price_stripe})
+    )
 
         return render(request, 'order_summary.html', {'title' : selection.title, 'price' : price})
 

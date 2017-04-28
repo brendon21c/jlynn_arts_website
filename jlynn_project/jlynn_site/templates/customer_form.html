@@ -44,8 +44,8 @@
     <form action="{% url 'jlynn_site:buy_painting' image_pk=image_pk%}" method="post">
 
       {% csrf_token %}
-      {{ form.as_p }}
-      
+      <!-- {{ form.as_p }} -->
+
       <article>
             <label>
               <span>Amount is ${{ price }}</span>
@@ -54,9 +54,15 @@
 
           <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                   data-key="{{ key }}"
-                  data-description="A Django Charge"
+                  data-name="Jlynn Arts"
+                  data-description="Please enter your information."
                   data-amount="{{ price_stripe }}"
-                  data-locale="auto"></script>
+                  data-locale="auto"
+                  data-zip-code="true"
+                  data-billing-address="true"
+                  data-shipping-address="true"
+                  data-allow-remember-me="false">
+          </script>
 
     </form>
     </div>
