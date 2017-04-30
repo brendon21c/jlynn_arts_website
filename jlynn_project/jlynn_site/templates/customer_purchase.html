@@ -36,18 +36,35 @@
 
     <br></br>
 
-    <h3> Please enter your Shipping information </h3>
+    <h3> Order Summary</h3>
 
     {% if image_pk %}
 
     <div class="w3-light-grey w3-content">
-    <form action="{% url 'jlynn_site:buy_painting' image_pk=image_pk%}" method="post">
+    <form action="{% url 'jlynn_site:purchase' image_pk=image_pk %}" method="post">
 
       {% csrf_token %}
-      {{ form.as_p }}
-      
-      <input class="w3-text-white w3-left w3-button w3-black" name='buy' type='submit' value='Buy'>
+      <article>
+            <label>
 
+              <p> {{ title }} </p>
+              <br></br>
+              <p>Painting is ${{ price }}</p>
+              <p>Shipping is ${{ ship_price }}</p>
+            </label>
+          </article>
+
+          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                  data-key="{{ key }}"
+                  data-name="Jlynn Arts"
+                  data-description="Please enter your information."
+                  data-amount="{{ total_amount }}"
+                  data-locale="auto"
+                  data-zip-code="false"
+                  data-billing-address="true"
+                  data-shipping-address="false"
+                  data-allow-remember-me="false">
+          </script>
 
     </form>
     </div>
