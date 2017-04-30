@@ -52,9 +52,7 @@ def purchase(request, image_pk):
             customer=customer['id'],
             amount=total_amount,
             currency='usd',
-            description='We thank you for your purchase. Please enjoy ' + title,
-            receipt_email=customer_email
-
+            description='We thank you for your purchase. Please enjoy ' + title
         )
 
         return render(request, 'order_receipt.html', {'title' : title, 'price' : price_display})
