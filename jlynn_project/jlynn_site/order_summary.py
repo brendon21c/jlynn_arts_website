@@ -36,7 +36,7 @@ def purchase(request, image_pk):
         shipping_price = selection.shipping_cost * 100
 
         # this is for Stripe
-        total_amount = float(price_stripe) + float(shipping_price)
+        total_amount = int (float(price_stripe) + float(shipping_price))
 
         price_display = int(price) + float(selection.shipping_cost)
 
@@ -52,7 +52,7 @@ def purchase(request, image_pk):
             customer=customer['id'],
             amount=total_amount,
             currency='usd',
-            description='We thank you for your purchase. Please enjoy ' + title
+            description='We thank you for your purchase.'
         )
 
         return render(request, 'order_receipt.html', {'title' : title, 'price' : price_display})
