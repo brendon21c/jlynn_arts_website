@@ -21,10 +21,10 @@ def get_shipping_rates(customer, image_pk):
         #easypost.api_key = os.environ['EASYPOST_API_KEY']'AR6L28Kttru4eqIytIie1w'
 
         # creating final dimensions for package. The 8 represents the extra amount for packaging.
-        length = selection.length + 8
-        width = selection.width + 8
-        height = selection.height + 8
-        weight = selection.weight
+        length = selection.length + 4
+        width = selection.width + 4
+        height = selection.height + 4
+        weight = selection.weight * 16 # easypost uses oz. in their calculations
 
 
         # EasyPost information
@@ -72,14 +72,18 @@ def get_shipping_rates(customer, image_pk):
             parcel = parcel
         )
 
-        print(shipment)
-
         # buy postage label with one of the rate objects
         # EasyPost does not have a easy way of getting the charge amount without going to the dashboard.
-        shipment.buy(rate=shipment.lowest_rate(carriers=['USPS'], services=['Priority']))
+        #shipment.buy(rate=shipment.lowest_rate(carriers=['USPS'], services=['Priority']))
 
-        # selection.shipping_cost = shipping_price
-        # selection.save()
+        rates = shipment.get_rates()
+
+        rate = rates.rates[0]['retail_rate']
+
+        total_shipping_cost = float(selection.shipping_cost) + float(rate)
+
+        selection.shipping_cost = total_shipping_cost
+        selection.save()
 
 
     except Exception as e:

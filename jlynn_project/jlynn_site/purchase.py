@@ -2,14 +2,11 @@ from django.shortcuts import render, redirect, get_object_or_404, render_to_resp
 from .models import Art, Customer
 from .forms import UserInfo
 import six
-import easypost
-import smtplib
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
 import os
 import logging
 import stripe
 from .shipping_rates import get_shipping_rates
+from .email import email_shipping_info
 
 
 # Wording here is important.
@@ -80,34 +77,8 @@ def buy_painting(request, image_pk):
 
             try:
 
-                # Email Jess shipping information, Had to do it this way since Stripe's shipping
-                # process won't work for this format.
-                # using tutorial from: http://naelshiab.com/tutorial-send-email-python/
 
-                fromaddr = "brennon.mckeever@gmail.com"
-                toaddr = "jessi.one82@gmail.com"
-                msg = MIMEMultipart()
-                msg['From'] = fromaddr
-                msg['To'] = toaddr
-                msg['Subject'] = "Shipping info for {}".format(title)
-
-                body = """ From: {}  \n Street Address: {} \n
-                Apt: {} \n City: {} \n State: {} \n Zip Code: {} \n
-                Phone: {}  """.format(name_combined, street_address, apt_number, city, state, zip_code, phone_number)
-
-
-                msg.attach(MIMEText(body, 'plain'))
-
-                server = smtplib.SMTP('smtp.gmail.com', 587)
-                server.ehlo()
-                server.starttls()
-                server.ehlo()
-                # TODO add to os.environ later.
-                server.login(fromaddr, "Daeda!us1983")
-                #server.login(fromaddr, os.environ['GMAIL_LOGIN'])
-                text = msg.as_string()
-                server.sendmail(fromaddr, toaddr, text)
-                server.quit()
+                email_shipping_info(customer, image_pk)
 
 
             except Exception as e:
@@ -115,6 +86,8 @@ def buy_painting(request, image_pk):
                 logging.exception("error processing email")
                 pass
 
+            # Updated Shipping price information
+            selection = Art.objects.get(id=image_pk)
 
             shipping_price = selection.shipping_cost
 
