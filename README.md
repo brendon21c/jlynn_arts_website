@@ -33,6 +33,12 @@ main page, I didn't have time to get these running.
 
 ## Shop Page
 
+<img width="1016" alt="screen shot 2017-05-09 at 5 31 42 pm" src="https://cloud.githubusercontent.com/assets/10622937/25875513/8cc55102-34dd-11e7-9aac-e9095624a462.png">
+
+## Shipping Information Page
+
+
+
 
 
 
