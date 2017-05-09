@@ -25,6 +25,10 @@ purposes, the easiest is for Visa: 4242 4242 4242 4242 with any exp date and cvs
 page and create a superuser in your terminal. The last thing is the about tab is none functioning as is the contact form at the bottom of the 
 main page, I didn't have time to get these running.
 
+## Deployment
+
+This site has been deployed to Heroku and can be found at: https://glacial-cove-18589.herokuapp.com/shop/. At least until my wife figures out what she wants to call her site.
+
 # Examples
 
 ## Main Page
