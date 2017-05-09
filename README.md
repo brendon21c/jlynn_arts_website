@@ -37,9 +37,23 @@ main page, I didn't have time to get these running.
 
 ## Shipping Information Page
 
-<img width="1011" alt="screen shot 2017-05-09 at 5 35 39 pm" src="https://cloud.githubusercontent.com/assets/10622937/25875621/19f18e10-34de-11e7-8fcf-d94e6422d8ce.png">
+<img width="1009" alt="screen shot 2017-05-09 at 5 34 31 pm" src="https://cloud.githubusercontent.com/assets/10622937/25875624/1a108266-34de-11e7-96d8-cfac6c1254e7.png">
+
 
 ## Order Summary Page
+
+<img width="1001" alt="screen shot 2017-05-09 at 5 34 55 pm" src="https://cloud.githubusercontent.com/assets/10622937/25875625/1a11a6dc-34de-11e7-8fcc-d93a7a7d440c.png">
+
+## Payment Screen
+
+<img width="998" alt="screen shot 2017-05-09 at 5 35 22 pm" src="https://cloud.githubusercontent.com/assets/10622937/25875622/1a094b90-34de-11e7-98c3-78a5d4331cdb.png">
+
+## Receipt Page
+
+<img width="1011" alt="screen shot 2017-05-09 at 5 35 39 pm" src="https://cloud.githubusercontent.com/assets/10622937/25875621/19f18e10-34de-11e7-8fcf-d94e6422d8ce.png">
+
+
+
 
 
 
