@@ -37,6 +37,11 @@ main page, I didn't have time to get these running.
 
 ## Shipping Information Page
 
+<img width="1011" alt="screen shot 2017-05-09 at 5 35 39 pm" src="https://cloud.githubusercontent.com/assets/10622937/25875621/19f18e10-34de-11e7-8fcf-d94e6422d8ce.png">
+
+## Order Summary Page
+
+
 
 
 
