@@ -9,23 +9,14 @@ from .shipping_rates import get_shipping_rates
 from .email import email_shipping_info
 
 
-# Wording here is important.
-
-# TODO This will need to be moved to os.environ eventually.
-# These are test keys from Stripe. "Live" versions can be added later for real payments.
-stripe_keys = {
-  'secret_key': 'sk_test_WX4SzxB1PPRyRDvnvN5Xv0vS',
-  'publishable_key': 'pk_test_qiC7dKkruip7ESWN86opGEUA'
-}
-
 
 def buy_painting(request, image_pk):
-    ''' Collects the users infor '''
+    ''' Collects the users informtion '''
 
-    # Needs to be here so information can be displayed on page.
-    stripe.api_key = stripe_keys['secret_key']
 
-    key = stripe_keys['publishable_key']
+    stripe.api_key = os.environ['STRIPE_SECRET_KEY']
+
+    key = os.environ['STRIPE_PUBLISHABLE_KEY']
 
     # query Database and get the correct painting object.
     selection = Art.objects.get(id=image_pk)

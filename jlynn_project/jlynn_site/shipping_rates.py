@@ -17,8 +17,8 @@ def get_shipping_rates(customer, image_pk):
     try:
 
         # Wording here is important.
-        easypost.api_key = 'L2wIMpaqVZOPRtXNH05MuQ'
-        #easypost.api_key = os.environ['EASYPOST_API_KEY']'AR6L28Kttru4eqIytIie1w'
+        #easypost.api_key = 'L2wIMpaqVZOPRtXNH05MuQ'
+        easypost.api_key = os.environ['EASYPOST_API_KEY']
 
         # creating final dimensions for package. The 8 represents the extra amount for packaging.
         length = selection.length + 4
@@ -39,7 +39,6 @@ def get_shipping_rates(customer, image_pk):
             phone = customer.phone_number
         )
 
-        print(to_address)
 
         from_address = easypost.Address.create(
             name = "Jessica McKeever",
@@ -52,7 +51,6 @@ def get_shipping_rates(customer, image_pk):
             phone = "999-999-9999"
         )
 
-        print(from_address)
 
         # create parcel
 
@@ -63,7 +61,6 @@ def get_shipping_rates(customer, image_pk):
             weight = weight
         )
 
-        print(parcel)
 
         # create shipment
         shipment = easypost.Shipment.create(

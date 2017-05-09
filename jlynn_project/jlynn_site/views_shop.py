@@ -8,7 +8,7 @@ def art_store(request):
 
     if request.method == 'POST':
 
-        print("got here, art_store") # TODO need to figure out how to get what item was selected.
+        print("got here, art_store")
 
 
     return render(request, 'store_page.html', {'collection' : collection})

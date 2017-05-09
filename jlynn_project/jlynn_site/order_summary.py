@@ -4,22 +4,17 @@ from .forms import UserInfo
 import stripe
 import six
 import easypost
-
-
-# TODO This will need to be moved to os.environ eventually.
-# These are test keys from Stripe. "Live" versions can be added later for real payments.
-stripe_keys = {
-  'secret_key': 'sk_test_WX4SzxB1PPRyRDvnvN5Xv0vS',
-  'publishable_key': 'pk_test_qiC7dKkruip7ESWN86opGEUA'
-}
-
+import os
 
 
 def purchase(request, image_pk):
 
-    stripe.api_key = stripe_keys['secret_key']
+    # These are test keys from Stripe. "Live" versions can be added later for real payments.
 
-    key = stripe_keys['publishable_key']
+    stripe.api_key = os.environ['STRIPE_SECRET_KEY']
+
+    key = os.environ['STRIPE_PUBLISHABLE_KEY']
+
 
 
     if request.method == 'POST':
@@ -41,13 +36,14 @@ def purchase(request, image_pk):
         price_display = int(price) + float(selection.shipping_cost)
 
 
+        # Create Stripe customer
         customer = stripe.Customer.create(
             email=request.POST['stripeEmail'],
             source=request.POST['stripeToken'],
         )
 
-        customer_email = customer['email']
 
+        # Process Charge.
         charge = stripe.Charge.create(
             customer=customer['id'],
             amount=total_amount,
