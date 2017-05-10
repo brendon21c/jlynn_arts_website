@@ -19,9 +19,9 @@ def email_shipping_info(customer, image_pk):
     try:
 
         SMTP_HOST = 'smtp.gmail.com'
-        SMTP_USER = 'brennon.mckeever@gmail.com'
-        SMTP_PASS = 'Daeda!us1983'
-        SMTP_ADDRESS = 'brennon.mckeever@gmail.com'
+        SMTP_USER = 'brendon21c@gmail.com'
+        SMTP_PASS = os.environ['GMAIL_PASSWORD']
+        SMTP_ADDRESS = 'brendon21c@gmail.com'
 
         body = """ From: {}  \n Street Address: {} \n
         Apt: {} \n City: {} \n State: {} \n Zip Code: {} \n
